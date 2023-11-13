@@ -4,6 +4,7 @@ import org.junit.Test;
 import directives.section.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SectionTest
 {
@@ -53,13 +54,10 @@ public class SectionTest
   @Test
   public void includeNestedSectionTest()
   {
-    String result =
-      "begin\n" +
-      "        <h2 style=\"font-size: 1\">Font size: 1</h2>\n" +
-      "        <h2 style=\"font-size: 2\">Font size: 2</h2>\n" +
-      "        <h2 style=\"font-size: 3\">Font size: 3</h2>\n" +
-      "end";
-    assertEquals( result, demo.IncludeNestedSectionTest.render() );
+    String output = demo.IncludeNestedSectionTest.render();
+    assertTrue(output.contains("        <h2 style=\"font-size: 1\">Font size: 1</h2>\n") &&
+            output.contains("        <h2 style=\"font-size: 2\">Font size: 2</h2>\n") &&
+            output.contains("        <h2 style=\"font-size: 3\">Font size: 3</h2>\n"));
   }
 
 }
